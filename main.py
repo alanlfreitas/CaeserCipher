@@ -45,32 +45,44 @@
 # n = int(input("Check this number: "))
 # prime_checker(number=n)
 
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+alphabet = [' ','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-def encrypt(plain_text, shift_amount):
-  cipher_text = ''
-  for letter in plain_text:
+def caeser(start_text, shift_amount, cipher_direction):
+  final_text = ""
+  if cipher_direction == "decode":
+      shift_amount = shift_amount * -1
+  for letter in start_text:
     position = alphabet.index(letter)
     new_position = position + shift_amount
-    new_letter = alphabet[new_position]
-    cipher_text += new_letter
-  print(f"The encoded text is: {cipher_text}")
+    final_text += alphabet[new_position]
+  print(f"The {cipher_direction}d text is: {final_text}")
+caeser(start_text = text, shift_amount = shift, cipher_direction = direction)
 
-def decrypt(cipher_text, shift_amount):
-  plain_text = ''
-  for letter in cipher_text:
-    position = alphabet.index(letter)
-    new_position = position - shift_amount
-    plain_text += alphabet[new_position]
-  print(f"The decoded text is {plain_text}")
+# def encrypt(plain_text, shift_amount):
+#   cipher_text = ''
+#   for letter in plain_text:
+#     position = alphabet.index(letter)
+#     new_position = position + shift_amount
+#     new_letter = alphabet[new_position]
+#     cipher_text += new_letter
+#   print(f"The encoded text is: {cipher_text}")
+
+# def decrypt(cipher_text, shift_amount):
+#   plain_text = ''
+#   for letter in cipher_text:
+#     position = alphabet.index(letter)
+#     new_position = position - shift_amount
+#     plain_text += alphabet[new_position]
+#   print(f"The decoded text is {plain_text}")
 
 
-if direction == "encode":
-  encrypt(plain_text = text, shift_amount = shift)
+# if direction == "encode":
+#   encrypt(plain_text = text, shift_amount = shift)
 
-elif direction == "decode":
-  decrypt(cipher_text=text, shift_amount=shift)
+# elif direction == "decode":
+#   decrypt(cipher_text=text, shift_amount=shift)
+
